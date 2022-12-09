@@ -1,22 +1,31 @@
 import 'package:appcenter_sdk_flutter/src/appcenter_crashes/appcenter_crashes_platform_interface.dart';
+import 'package:meta/meta.dart';
 
 class AppCenterCrashes {
-  Future<void> generateTestCrash() =>
+  @visibleForTesting
+  // Because
+  // ignore: avoid_setters_without_getters
+  static set instance(final AppCenterCrashesPlatformInterface instance) {
+    AppCenterCrashesPlatformInterface.instance = instance;
+  }
+
+  static Future<void> generateTestCrash() =>
       AppCenterCrashesPlatformInterface.instance.generateTestCrash();
 
-  Future<bool> hasReceivedMemoryWarningInLastSession() =>
+  static Future<bool> hasReceivedMemoryWarningInLastSession() =>
       AppCenterCrashesPlatformInterface.instance
           .hasReceivedMemoryWarningInLastSession();
 
-  Future<bool> hasCrashedInLastSession() =>
+  static Future<bool> hasCrashedInLastSession() =>
       AppCenterCrashesPlatformInterface.instance.hasCrashedInLastSession();
 
-  Future<void> enable() => AppCenterCrashesPlatformInterface.instance.enable();
+  static Future<void> enable() =>
+      AppCenterCrashesPlatformInterface.instance.enable();
 
-  Future<void> disable() =>
+  static Future<void> disable() =>
       AppCenterCrashesPlatformInterface.instance.disable();
 
-  Future<bool> isEnabled() =>
+  static Future<bool> isEnabled() =>
       AppCenterCrashesPlatformInterface.instance.isEnabled();
 
   static Future<void> trackException({

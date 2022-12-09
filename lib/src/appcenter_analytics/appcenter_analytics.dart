@@ -1,6 +1,14 @@
 import 'package:appcenter_sdk_flutter/src/appcenter_analytics/appcenter_analytics_platform_interface.dart';
+import 'package:meta/meta.dart';
 
 class AppCenterAnalytics {
+  @visibleForTesting
+  // Because
+  // ignore: avoid_setters_without_getters
+  static set instance(final AppCenterAnalyticsPlatformInterface instance) {
+    AppCenterAnalyticsPlatformInterface.instance = instance;
+  }
+
   static Future<void> trackEvent({
     required final String name,
     final Map<String, String>? properties,
