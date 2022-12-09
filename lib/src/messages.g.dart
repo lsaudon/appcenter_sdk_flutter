@@ -7,19 +7,20 @@ import 'dart:typed_data' show Float64List, Int32List, Int64List, Uint8List;
 import 'package:flutter/foundation.dart' show ReadBuffer, WriteBuffer;
 import 'package:flutter/services.dart';
 
-
 class AppCenterApi {
   /// Constructor for [AppCenterApi].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
-  AppCenterApi({BinaryMessenger? binaryMessenger}) : _binaryMessenger = binaryMessenger;
+  AppCenterApi({BinaryMessenger? binaryMessenger})
+      : _binaryMessenger = binaryMessenger;
   final BinaryMessenger? _binaryMessenger;
 
   static const MessageCodec<Object?> codec = StandardMessageCodec();
 
   Future<void> start(String arg_secret) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterApi.start', codec, binaryMessenger: _binaryMessenger);
+        'dev.flutter.pigeon.AppCenterApi.start', codec,
+        binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
         await channel.send(<Object?>[arg_secret]) as Map<Object?, Object?>?;
     if (replyMap == null) {
@@ -28,7 +29,8 @@ class AppCenterApi {
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -41,7 +43,8 @@ class AppCenterApi {
 
   Future<void> setEnabled(bool arg_enabled) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterApi.setEnabled', codec, binaryMessenger: _binaryMessenger);
+        'dev.flutter.pigeon.AppCenterApi.setEnabled', codec,
+        binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
         await channel.send(<Object?>[arg_enabled]) as Map<Object?, Object?>?;
     if (replyMap == null) {
@@ -50,7 +53,8 @@ class AppCenterApi {
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -63,7 +67,8 @@ class AppCenterApi {
 
   Future<bool> isEnabled() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterApi.isEnabled', codec, binaryMessenger: _binaryMessenger);
+        'dev.flutter.pigeon.AppCenterApi.isEnabled', codec,
+        binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
         await channel.send(null) as Map<Object?, Object?>?;
     if (replyMap == null) {
@@ -72,7 +77,8 @@ class AppCenterApi {
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -90,7 +96,8 @@ class AppCenterApi {
 
   Future<bool> isConfigured() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterApi.isConfigured', codec, binaryMessenger: _binaryMessenger);
+        'dev.flutter.pigeon.AppCenterApi.isConfigured', codec,
+        binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
         await channel.send(null) as Map<Object?, Object?>?;
     if (replyMap == null) {
@@ -99,7 +106,8 @@ class AppCenterApi {
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -117,7 +125,8 @@ class AppCenterApi {
 
   Future<String> getInstallId() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterApi.getInstallId', codec, binaryMessenger: _binaryMessenger);
+        'dev.flutter.pigeon.AppCenterApi.getInstallId', codec,
+        binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
         await channel.send(null) as Map<Object?, Object?>?;
     if (replyMap == null) {
@@ -126,7 +135,8 @@ class AppCenterApi {
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -144,7 +154,8 @@ class AppCenterApi {
 
   Future<bool> isRunningInAppCenterTestCloud() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterApi.isRunningInAppCenterTestCloud', codec, binaryMessenger: _binaryMessenger);
+        'dev.flutter.pigeon.AppCenterApi.isRunningInAppCenterTestCloud', codec,
+        binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
         await channel.send(null) as Map<Object?, Object?>?;
     if (replyMap == null) {
@@ -153,7 +164,8 @@ class AppCenterApi {
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -170,28 +182,32 @@ class AppCenterApi {
   }
 }
 
-
 class AppCenterAnalyticsApi {
   /// Constructor for [AppCenterAnalyticsApi].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
-  AppCenterAnalyticsApi({BinaryMessenger? binaryMessenger}) : _binaryMessenger = binaryMessenger;
+  AppCenterAnalyticsApi({BinaryMessenger? binaryMessenger})
+      : _binaryMessenger = binaryMessenger;
   final BinaryMessenger? _binaryMessenger;
 
   static const MessageCodec<Object?> codec = StandardMessageCodec();
 
-  Future<void> trackEvent(String arg_name, Map<String?, String?>? arg_properties, int? arg_flags) async {
+  Future<void> trackEvent(String arg_name,
+      Map<String?, String?>? arg_properties, int? arg_flags) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterAnalyticsApi.trackEvent', codec, binaryMessenger: _binaryMessenger);
+        'dev.flutter.pigeon.AppCenterAnalyticsApi.trackEvent', codec,
+        binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
-        await channel.send(<Object?>[arg_name, arg_properties, arg_flags]) as Map<Object?, Object?>?;
+        await channel.send(<Object?>[arg_name, arg_properties, arg_flags])
+            as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -204,7 +220,8 @@ class AppCenterAnalyticsApi {
 
   Future<void> pause() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterAnalyticsApi.pause', codec, binaryMessenger: _binaryMessenger);
+        'dev.flutter.pigeon.AppCenterAnalyticsApi.pause', codec,
+        binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
         await channel.send(null) as Map<Object?, Object?>?;
     if (replyMap == null) {
@@ -213,7 +230,8 @@ class AppCenterAnalyticsApi {
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -226,7 +244,8 @@ class AppCenterAnalyticsApi {
 
   Future<void> resume() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterAnalyticsApi.resume', codec, binaryMessenger: _binaryMessenger);
+        'dev.flutter.pigeon.AppCenterAnalyticsApi.resume', codec,
+        binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
         await channel.send(null) as Map<Object?, Object?>?;
     if (replyMap == null) {
@@ -235,7 +254,8 @@ class AppCenterAnalyticsApi {
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -248,7 +268,8 @@ class AppCenterAnalyticsApi {
 
   Future<void> analyticsSetEnabled(bool arg_enabled) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterAnalyticsApi.analyticsSetEnabled', codec, binaryMessenger: _binaryMessenger);
+        'dev.flutter.pigeon.AppCenterAnalyticsApi.analyticsSetEnabled', codec,
+        binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
         await channel.send(<Object?>[arg_enabled]) as Map<Object?, Object?>?;
     if (replyMap == null) {
@@ -257,7 +278,8 @@ class AppCenterAnalyticsApi {
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -270,7 +292,8 @@ class AppCenterAnalyticsApi {
 
   Future<bool> analyticsIsEnabled() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterAnalyticsApi.analyticsIsEnabled', codec, binaryMessenger: _binaryMessenger);
+        'dev.flutter.pigeon.AppCenterAnalyticsApi.analyticsIsEnabled', codec,
+        binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
         await channel.send(null) as Map<Object?, Object?>?;
     if (replyMap == null) {
@@ -279,7 +302,8 @@ class AppCenterAnalyticsApi {
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -297,7 +321,9 @@ class AppCenterAnalyticsApi {
 
   Future<void> enableManualSessionTracker() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterAnalyticsApi.enableManualSessionTracker', codec, binaryMessenger: _binaryMessenger);
+        'dev.flutter.pigeon.AppCenterAnalyticsApi.enableManualSessionTracker',
+        codec,
+        binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
         await channel.send(null) as Map<Object?, Object?>?;
     if (replyMap == null) {
@@ -306,7 +332,8 @@ class AppCenterAnalyticsApi {
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -319,7 +346,8 @@ class AppCenterAnalyticsApi {
 
   Future<void> startSession() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterAnalyticsApi.startSession', codec, binaryMessenger: _binaryMessenger);
+        'dev.flutter.pigeon.AppCenterAnalyticsApi.startSession', codec,
+        binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
         await channel.send(null) as Map<Object?, Object?>?;
     if (replyMap == null) {
@@ -328,7 +356,8 @@ class AppCenterAnalyticsApi {
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -341,7 +370,9 @@ class AppCenterAnalyticsApi {
 
   Future<bool> setTransmissionInterval(int arg_seconds) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterAnalyticsApi.setTransmissionInterval', codec, binaryMessenger: _binaryMessenger);
+        'dev.flutter.pigeon.AppCenterAnalyticsApi.setTransmissionInterval',
+        codec,
+        binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
         await channel.send(<Object?>[arg_seconds]) as Map<Object?, Object?>?;
     if (replyMap == null) {
@@ -350,7 +381,8 @@ class AppCenterAnalyticsApi {
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -367,19 +399,20 @@ class AppCenterAnalyticsApi {
   }
 }
 
-
 class AppCenterCrashesApi {
   /// Constructor for [AppCenterCrashesApi].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
   /// BinaryMessenger will be used which routes to the host platform.
-  AppCenterCrashesApi({BinaryMessenger? binaryMessenger}) : _binaryMessenger = binaryMessenger;
+  AppCenterCrashesApi({BinaryMessenger? binaryMessenger})
+      : _binaryMessenger = binaryMessenger;
   final BinaryMessenger? _binaryMessenger;
 
   static const MessageCodec<Object?> codec = StandardMessageCodec();
 
   Future<void> generateTestCrash() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterCrashesApi.generateTestCrash', codec, binaryMessenger: _binaryMessenger);
+        'dev.flutter.pigeon.AppCenterCrashesApi.generateTestCrash', codec,
+        binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
         await channel.send(null) as Map<Object?, Object?>?;
     if (replyMap == null) {
@@ -388,7 +421,8 @@ class AppCenterCrashesApi {
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -401,7 +435,9 @@ class AppCenterCrashesApi {
 
   Future<bool> hasReceivedMemoryWarningInLastSession() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterCrashesApi.hasReceivedMemoryWarningInLastSession', codec, binaryMessenger: _binaryMessenger);
+        'dev.flutter.pigeon.AppCenterCrashesApi.hasReceivedMemoryWarningInLastSession',
+        codec,
+        binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
         await channel.send(null) as Map<Object?, Object?>?;
     if (replyMap == null) {
@@ -410,7 +446,8 @@ class AppCenterCrashesApi {
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -428,7 +465,8 @@ class AppCenterCrashesApi {
 
   Future<bool> hasCrashedInLastSession() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterCrashesApi.hasCrashedInLastSession', codec, binaryMessenger: _binaryMessenger);
+        'dev.flutter.pigeon.AppCenterCrashesApi.hasCrashedInLastSession', codec,
+        binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
         await channel.send(null) as Map<Object?, Object?>?;
     if (replyMap == null) {
@@ -437,7 +475,8 @@ class AppCenterCrashesApi {
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -455,7 +494,8 @@ class AppCenterCrashesApi {
 
   Future<void> crashesSetEnabled(bool arg_enabled) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterCrashesApi.crashesSetEnabled', codec, binaryMessenger: _binaryMessenger);
+        'dev.flutter.pigeon.AppCenterCrashesApi.crashesSetEnabled', codec,
+        binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
         await channel.send(<Object?>[arg_enabled]) as Map<Object?, Object?>?;
     if (replyMap == null) {
@@ -464,7 +504,8 @@ class AppCenterCrashesApi {
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -477,7 +518,8 @@ class AppCenterCrashesApi {
 
   Future<bool> crashesIsEnabled() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterCrashesApi.crashesIsEnabled', codec, binaryMessenger: _binaryMessenger);
+        'dev.flutter.pigeon.AppCenterCrashesApi.crashesIsEnabled', codec,
+        binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
         await channel.send(null) as Map<Object?, Object?>?;
     if (replyMap == null) {
@@ -486,7 +528,8 @@ class AppCenterCrashesApi {
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
@@ -502,18 +545,22 @@ class AppCenterCrashesApi {
     }
   }
 
-  Future<void> trackException(String arg_message, String? arg_type, String? arg_stackTrace, Map<String?, String?>? arg_properties) async {
+  Future<void> trackException(String arg_message, String? arg_type,
+      String? arg_stackTrace, Map<String?, String?>? arg_properties) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterCrashesApi.trackException', codec, binaryMessenger: _binaryMessenger);
-    final Map<Object?, Object?>? replyMap =
-        await channel.send(<Object?>[arg_message, arg_type, arg_stackTrace, arg_properties]) as Map<Object?, Object?>?;
+        'dev.flutter.pigeon.AppCenterCrashesApi.trackException', codec,
+        binaryMessenger: _binaryMessenger);
+    final Map<Object?, Object?>? replyMap = await channel.send(
+            <Object?>[arg_message, arg_type, arg_stackTrace, arg_properties])
+        as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
         message: 'Unable to establish connection on channel.',
       );
     } else if (replyMap['error'] != null) {
-      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      final Map<Object?, Object?> error =
+          (replyMap['error'] as Map<Object?, Object?>?)!;
       throw PlatformException(
         code: (error['code'] as String?)!,
         message: error['message'] as String?,
