@@ -8,25 +8,28 @@ import io.flutter.plugin.common.BasicMessageChannel
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MessageCodec
 import io.flutter.plugin.common.StandardMessageCodec
-import java.io.ByteArrayOutputStream
-import java.nio.ByteBuffer
 
 /** Generated class from Pigeon. */
+
 /** Generated interface from Pigeon that represents a handler of messages from Flutter. */
-interface AppCenterSdkApi {
+interface AppCenterApi {
   fun start(secret: String)
-  fun trackException(message: String, type: String?, stackTrace: String?, properties: Map<String, String>?)
+  fun setEnabled(enabled: Boolean, callback: () -> Unit)
+  fun isEnabled(callback: (Boolean) -> Unit)
+  fun isConfigured(): Boolean
+  fun getInstallId(callback: (String) -> Unit)
+  fun isRunningInAppCenterTestCloud(): Boolean
 
   companion object {
-    /** The codec used by AppCenterSdkApi. */
-    val codec: MessageCodec<Any?> by lazy {
+    /** The codec used by AppCenterApi. */
+    private val codec: MessageCodec<Any?> by lazy {
       StandardMessageCodec()
     }
-    /** Sets up an instance of `AppCenterSdkApi` to handle messages through the `binaryMessenger`. */
+    /** Sets up an instance of `AppCenterApi` to handle messages through the `binaryMessenger`. */
     @Suppress("UNCHECKED_CAST")
-    fun setUp(binaryMessenger: BinaryMessenger, api: AppCenterSdkApi?) {
+    fun setUp(binaryMessenger: BinaryMessenger, api: AppCenterApi?) {
       run {
-        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterSdkApi.start", codec)
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterApi.start", codec)
         if (api != null) {
           channel.setMessageHandler { message, reply ->
             val wrapped = hashMapOf<String, Any?>()
@@ -45,7 +48,373 @@ interface AppCenterSdkApi {
         }
       }
       run {
-        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterSdkApi.trackException", codec)
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterApi.setEnabled", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val wrapped = hashMapOf<String, Any?>()
+            try {
+              val args = message as List<Any?>
+              val enabledArg = args[0] as Boolean
+              api.setEnabled(enabledArg) {
+                reply.reply(wrapResult(null))
+              }
+            } catch (exception: Error) {
+              wrapped["error"] = wrapError(exception)
+              reply.reply(wrapped)
+            }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterApi.isEnabled", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped = hashMapOf<String, Any?>()
+            try {
+              api.isEnabled {
+                reply.reply(wrapResult(it))
+              }
+            } catch (exception: Error) {
+              wrapped["error"] = wrapError(exception)
+              reply.reply(wrapped)
+            }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterApi.isConfigured", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped = hashMapOf<String, Any?>()
+            try {
+              wrapped["result"] = api.isConfigured()
+            } catch (exception: Error) {
+              wrapped["error"] = wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterApi.getInstallId", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped = hashMapOf<String, Any?>()
+            try {
+              api.getInstallId {
+                reply.reply(wrapResult(it))
+              }
+            } catch (exception: Error) {
+              wrapped["error"] = wrapError(exception)
+              reply.reply(wrapped)
+            }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterApi.isRunningInAppCenterTestCloud", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped = hashMapOf<String, Any?>()
+            try {
+              wrapped["result"] = api.isRunningInAppCenterTestCloud()
+            } catch (exception: Error) {
+              wrapped["error"] = wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+    }
+  }
+}
+/** Generated interface from Pigeon that represents a handler of messages from Flutter. */
+interface AppCenterAnalyticsApi {
+  fun trackEvent(name: String, properties: Map<String, String>?, flags: Long?)
+  fun pause()
+  fun resume()
+  fun analyticsSetEnabled(enabled: Boolean, callback: () -> Unit)
+  fun analyticsIsEnabled(callback: (Boolean) -> Unit)
+  fun enableManualSessionTracker()
+  fun startSession()
+  fun setTransmissionInterval(seconds: Long): Boolean
+
+  companion object {
+    /** The codec used by AppCenterAnalyticsApi. */
+    private val codec: MessageCodec<Any?> by lazy {
+      StandardMessageCodec()
+    }
+    /** Sets up an instance of `AppCenterAnalyticsApi` to handle messages through the `binaryMessenger`. */
+    @Suppress("UNCHECKED_CAST")
+    fun setUp(binaryMessenger: BinaryMessenger, api: AppCenterAnalyticsApi?) {
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterAnalyticsApi.trackEvent", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val wrapped = hashMapOf<String, Any?>()
+            try {
+              val args = message as List<Any?>
+              val nameArg = args[0] as String
+              val propertiesArg = args[1] as? Map<String, String>
+              val flagsArg = args[2].let { if (it is Int) it.toLong() else it as? Long }
+              api.trackEvent(nameArg, propertiesArg, flagsArg)
+              wrapped["result"] = null
+            } catch (exception: Error) {
+              wrapped["error"] = wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterAnalyticsApi.pause", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped = hashMapOf<String, Any?>()
+            try {
+              api.pause()
+              wrapped["result"] = null
+            } catch (exception: Error) {
+              wrapped["error"] = wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterAnalyticsApi.resume", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped = hashMapOf<String, Any?>()
+            try {
+              api.resume()
+              wrapped["result"] = null
+            } catch (exception: Error) {
+              wrapped["error"] = wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterAnalyticsApi.analyticsSetEnabled", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val wrapped = hashMapOf<String, Any?>()
+            try {
+              val args = message as List<Any?>
+              val enabledArg = args[0] as Boolean
+              api.analyticsSetEnabled(enabledArg) {
+                reply.reply(wrapResult(null))
+              }
+            } catch (exception: Error) {
+              wrapped["error"] = wrapError(exception)
+              reply.reply(wrapped)
+            }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterAnalyticsApi.analyticsIsEnabled", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped = hashMapOf<String, Any?>()
+            try {
+              api.analyticsIsEnabled {
+                reply.reply(wrapResult(it))
+              }
+            } catch (exception: Error) {
+              wrapped["error"] = wrapError(exception)
+              reply.reply(wrapped)
+            }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterAnalyticsApi.enableManualSessionTracker", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped = hashMapOf<String, Any?>()
+            try {
+              api.enableManualSessionTracker()
+              wrapped["result"] = null
+            } catch (exception: Error) {
+              wrapped["error"] = wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterAnalyticsApi.startSession", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped = hashMapOf<String, Any?>()
+            try {
+              api.startSession()
+              wrapped["result"] = null
+            } catch (exception: Error) {
+              wrapped["error"] = wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterAnalyticsApi.setTransmissionInterval", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val wrapped = hashMapOf<String, Any?>()
+            try {
+              val args = message as List<Any?>
+              val secondsArg = args[0].let { if (it is Int) it.toLong() else it as Long }
+              wrapped["result"] = api.setTransmissionInterval(secondsArg)
+            } catch (exception: Error) {
+              wrapped["error"] = wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+    }
+  }
+}
+/** Generated interface from Pigeon that represents a handler of messages from Flutter. */
+interface AppCenterCrashesApi {
+  fun generateTestCrash()
+  fun hasReceivedMemoryWarningInLastSession(callback: (Boolean) -> Unit)
+  fun hasCrashedInLastSession(callback: (Boolean) -> Unit)
+  fun crashesSetEnabled(enabled: Boolean, callback: () -> Unit)
+  fun crashesIsEnabled(callback: (Boolean) -> Unit)
+  fun trackException(message: String, type: String?, stackTrace: String?, properties: Map<String, String>?)
+
+  companion object {
+    /** The codec used by AppCenterCrashesApi. */
+    private val codec: MessageCodec<Any?> by lazy {
+      StandardMessageCodec()
+    }
+    /** Sets up an instance of `AppCenterCrashesApi` to handle messages through the `binaryMessenger`. */
+    @Suppress("UNCHECKED_CAST")
+    fun setUp(binaryMessenger: BinaryMessenger, api: AppCenterCrashesApi?) {
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterCrashesApi.generateTestCrash", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped = hashMapOf<String, Any?>()
+            try {
+              api.generateTestCrash()
+              wrapped["result"] = null
+            } catch (exception: Error) {
+              wrapped["error"] = wrapError(exception)
+            }
+            reply.reply(wrapped)
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterCrashesApi.hasReceivedMemoryWarningInLastSession", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped = hashMapOf<String, Any?>()
+            try {
+              api.hasReceivedMemoryWarningInLastSession {
+                reply.reply(wrapResult(it))
+              }
+            } catch (exception: Error) {
+              wrapped["error"] = wrapError(exception)
+              reply.reply(wrapped)
+            }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterCrashesApi.hasCrashedInLastSession", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped = hashMapOf<String, Any?>()
+            try {
+              api.hasCrashedInLastSession {
+                reply.reply(wrapResult(it))
+              }
+            } catch (exception: Error) {
+              wrapped["error"] = wrapError(exception)
+              reply.reply(wrapped)
+            }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterCrashesApi.crashesSetEnabled", codec)
+        if (api != null) {
+          channel.setMessageHandler { message, reply ->
+            val wrapped = hashMapOf<String, Any?>()
+            try {
+              val args = message as List<Any?>
+              val enabledArg = args[0] as Boolean
+              api.crashesSetEnabled(enabledArg) {
+                reply.reply(wrapResult(null))
+              }
+            } catch (exception: Error) {
+              wrapped["error"] = wrapError(exception)
+              reply.reply(wrapped)
+            }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterCrashesApi.crashesIsEnabled", codec)
+        if (api != null) {
+          channel.setMessageHandler { _, reply ->
+            val wrapped = hashMapOf<String, Any?>()
+            try {
+              api.crashesIsEnabled {
+                reply.reply(wrapResult(it))
+              }
+            } catch (exception: Error) {
+              wrapped["error"] = wrapError(exception)
+              reply.reply(wrapped)
+            }
+          }
+        } else {
+          channel.setMessageHandler(null)
+        }
+      }
+      run {
+        val channel = BasicMessageChannel<Any?>(binaryMessenger, "dev.flutter.pigeon.AppCenterCrashesApi.trackException", codec)
         if (api != null) {
           channel.setMessageHandler { message, reply ->
             val wrapped = hashMapOf<String, Any?>()
