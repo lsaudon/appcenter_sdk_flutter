@@ -1,29 +1,31 @@
 import 'package:appcenter_sdk_flutter/src/appcenter_crashes/appcenter_crashes_platform_interface.dart';
 
 class AppCenterCrashes {
-  Future<void> generateTestCrash() async =>
-      AppCenterCrashesPlatform.instance.generateTestCrash();
+  Future<void> generateTestCrash() =>
+      AppCenterCrashesPlatformInterface.instance.generateTestCrash();
 
-  Future<bool> hasReceivedMemoryWarningInLastSession() async =>
-      AppCenterCrashesPlatform.instance.hasReceivedMemoryWarningInLastSession();
+  Future<bool> hasReceivedMemoryWarningInLastSession() =>
+      AppCenterCrashesPlatformInterface.instance
+          .hasReceivedMemoryWarningInLastSession();
 
-  Future<bool> hasCrashedInLastSession() async =>
-      AppCenterCrashesPlatform.instance.hasCrashedInLastSession();
+  Future<bool> hasCrashedInLastSession() =>
+      AppCenterCrashesPlatformInterface.instance.hasCrashedInLastSession();
 
-  Future<void> enable() async => AppCenterCrashesPlatform.instance.enable();
+  Future<void> enable() => AppCenterCrashesPlatformInterface.instance.enable();
 
-  Future<void> disable() async => AppCenterCrashesPlatform.instance.disable();
+  Future<void> disable() =>
+      AppCenterCrashesPlatformInterface.instance.disable();
 
-  Future<bool> isEnabled() async =>
-      AppCenterCrashesPlatform.instance.isEnabled();
+  Future<bool> isEnabled() =>
+      AppCenterCrashesPlatformInterface.instance.isEnabled();
 
   static Future<void> trackException({
     required final String message,
     final Type? type,
     final StackTrace? stackTrace,
     final Map<String?, String?>? properties,
-  }) async =>
-      AppCenterCrashesPlatform.instance.trackException(
+  }) =>
+      AppCenterCrashesPlatformInterface.instance.trackException(
         message: message,
         type: type,
         stackTrace: stackTrace,

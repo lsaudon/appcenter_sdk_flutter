@@ -1,9 +1,18 @@
 import 'package:appcenter_sdk_flutter/src/appcenter_analytics/appcenter_analytics_platform_interface.dart';
 import 'package:appcenter_sdk_flutter/src/messages.g.dart';
+import 'package:meta/meta.dart';
 
-/// MethodChannelAppCenterAnalytics
-class MethodChannelAppCenterAnalytics extends AppCenterAnalyticsPlatform {
-  final AppCenterAnalyticsApi _api = AppCenterAnalyticsApi();
+class AppCenterAnalyticsMethodChannel
+    extends AppCenterAnalyticsPlatformInterface {
+  factory AppCenterAnalyticsMethodChannel() =>
+      AppCenterAnalyticsMethodChannel.internal(api: AppCenterAnalyticsApi());
+
+  @visibleForTesting
+  AppCenterAnalyticsMethodChannel.internal({
+    required final AppCenterAnalyticsApi api,
+  }) : _api = api;
+
+  final AppCenterAnalyticsApi _api;
 
   @override
   Future<void> trackEvent(

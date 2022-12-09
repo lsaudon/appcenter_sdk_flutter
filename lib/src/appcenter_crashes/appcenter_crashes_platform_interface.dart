@@ -1,16 +1,17 @@
 import 'package:appcenter_sdk_flutter/src/appcenter_crashes/appcenter_crashes_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-abstract class AppCenterCrashesPlatform extends PlatformInterface {
-  AppCenterCrashesPlatform() : super(token: _token);
+abstract class AppCenterCrashesPlatformInterface extends PlatformInterface {
+  AppCenterCrashesPlatformInterface() : super(token: _token);
+
+  static AppCenterCrashesPlatformInterface _instance =
+      AppCenterCrashesMethodChannel();
 
   static final Object _token = Object();
 
-  static AppCenterCrashesPlatform _instance = MethodChannelAppCenterCrashes();
+  static AppCenterCrashesPlatformInterface get instance => _instance;
 
-  static AppCenterCrashesPlatform get instance => _instance;
-
-  static set instance(final AppCenterCrashesPlatform instance) {
+  static set instance(final AppCenterCrashesPlatformInterface instance) {
     PlatformInterface.verify(instance, _token);
     _instance = instance;
   }
@@ -43,6 +44,6 @@ abstract class AppCenterCrashesPlatform extends PlatformInterface {
     required final Map<String?, String?>? properties,
   }) async =>
       throw UnimplementedError(
-        'Future<void> trackException({required String message, Type? type, StackTrace? stackTrace, Map<String?, String?>? properties}) has not been implemented.',
+        '''Future<void> trackException({required String message, Type? type, StackTrace? stackTrace, Map<String?, String?>? properties}) has not been implemented.''',
       );
 }

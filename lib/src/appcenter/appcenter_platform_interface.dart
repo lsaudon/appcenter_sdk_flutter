@@ -1,16 +1,16 @@
 import 'package:appcenter_sdk_flutter/src/appcenter/appcenter_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-abstract class AppCenterPlatform extends PlatformInterface {
-  AppCenterPlatform() : super(token: _token);
+abstract class AppCenterPlatformInterface extends PlatformInterface {
+  AppCenterPlatformInterface() : super(token: _token);
+
+  static AppCenterPlatformInterface _instance = AppCenterMethodChannel();
 
   static final Object _token = Object();
 
-  static AppCenterPlatform _instance = MethodChannelAppCenter();
+  static AppCenterPlatformInterface get instance => _instance;
 
-  static AppCenterPlatform get instance => _instance;
-
-  static set instance(final AppCenterPlatform instance) {
+  static set instance(final AppCenterPlatformInterface instance) {
     PlatformInterface.verify(instance, _token);
     _instance = instance;
   }

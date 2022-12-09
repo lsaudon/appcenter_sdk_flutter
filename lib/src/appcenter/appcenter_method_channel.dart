@@ -1,8 +1,16 @@
 import 'package:appcenter_sdk_flutter/src/appcenter/appcenter_platform_interface.dart';
 import 'package:appcenter_sdk_flutter/src/messages.g.dart';
+import 'package:meta/meta.dart';
 
-class MethodChannelAppCenter extends AppCenterPlatform {
-  final AppCenterApi _api = AppCenterApi();
+class AppCenterMethodChannel extends AppCenterPlatformInterface {
+  factory AppCenterMethodChannel() =>
+      AppCenterMethodChannel.internal(api: AppCenterApi());
+
+  @visibleForTesting
+  AppCenterMethodChannel.internal({required final AppCenterApi api})
+      : _api = api;
+
+  final AppCenterApi _api;
 
   @override
   Future<void> start({required final String secret}) async =>

@@ -1,8 +1,17 @@
 import 'package:appcenter_sdk_flutter/src/appcenter_crashes/appcenter_crashes_platform_interface.dart';
 import 'package:appcenter_sdk_flutter/src/messages.g.dart';
+import 'package:meta/meta.dart';
 
-class MethodChannelAppCenterCrashes extends AppCenterCrashesPlatform {
-  final AppCenterCrashesApi _api = AppCenterCrashesApi();
+class AppCenterCrashesMethodChannel extends AppCenterCrashesPlatformInterface {
+  factory AppCenterCrashesMethodChannel() =>
+      AppCenterCrashesMethodChannel.internal(api: AppCenterCrashesApi());
+
+  @visibleForTesting
+  AppCenterCrashesMethodChannel.internal({
+    required final AppCenterCrashesApi api,
+  }) : _api = api;
+
+  final AppCenterCrashesApi _api;
 
   @override
   Future<void> generateTestCrash() async => _api.generateTestCrash();
