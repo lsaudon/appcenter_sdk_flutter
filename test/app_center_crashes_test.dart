@@ -1,6 +1,5 @@
 import 'package:appcenter_sdk_flutter/appcenter_sdk_flutter.dart';
 import 'package:appcenter_sdk_flutter/src/appcenter_crashes/appcenter_crashes_method_channel.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
