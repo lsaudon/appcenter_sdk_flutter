@@ -1,4 +1,4 @@
-name: ci
+name: pana
 
 on:
   pull_request:
