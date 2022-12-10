@@ -26,6 +26,7 @@ dart_code_metrics:
   extends:
     - package:dart_code_metrics/presets/all.yaml
   rules:
+    - avoid-ignoring-return-values: false
     - avoid-passing-async-when-sync-expected: false
     - arguments-ordering:
         child-last: true
@@ -35,6 +36,9 @@ dart_code_metrics:
           - constructors 
           - private-fields
           - public-fields
+    - no-equal-arguments:
+        exclude:
+          - test/**
     - no-object-declaration: false
     - prefer-single-widget-per-file:
         ignore-private-widgets: true

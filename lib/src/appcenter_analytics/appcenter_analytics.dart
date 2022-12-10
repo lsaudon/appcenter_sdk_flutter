@@ -38,6 +38,9 @@ class AppCenterAnalytics {
   static Future<void> startSession() =>
       AppCenterAnalyticsPlatformInterface.instance.startSession();
 
+  /// Set transmission interval.
+  /// The transmission interval should be between 3 seconds and 86400 seconds.
+  /// Should be called before the service is started.
   static Future<bool> setTransmissionInterval(final int seconds) =>
       AppCenterAnalyticsPlatformInterface.instance
           .setTransmissionInterval(seconds);
