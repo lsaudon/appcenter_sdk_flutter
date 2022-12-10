@@ -7,5 +7,5 @@ on:
       - main
 
 jobs:
-  ci:
+  pana:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/pana.yml@v1
