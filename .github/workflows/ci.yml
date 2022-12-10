@@ -7,9 +7,10 @@ on:
       - main
 
 jobs:
-  build:
-    - uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
-      with:
-        coverage_excludes: "**/*.g.dart **/*_platform_interface.dart"
-        min_coverage: 90
-    - uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/pana.yml@v1
+  ci:
+    steps:
+          - uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+            with:
+              coverage_excludes: "**/*.g.dart **/*_platform_interface.dart"
+              min_coverage: 90
+          - uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/pana.yml@v1
