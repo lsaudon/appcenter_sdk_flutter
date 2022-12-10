@@ -1,0 +1,11 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  ci:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/pana.yml@v1
