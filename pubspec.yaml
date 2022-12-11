@@ -1,7 +1,7 @@
 name: appcenter_sdk_flutter
-description: A new Flutter plugin project.
+description: Development repository for the App Center SDK for Flutter
 version: 0.0.1
-homepage:
+repository: https://github.com/lsaudon/appcenter_sdk_flutter
 
 environment:
   sdk: '>=2.18.5 <3.0.0'
