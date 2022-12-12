@@ -5,11 +5,10 @@ import 'package:pigeon/pigeon.dart';
 @ConfigurePigeon(
   PigeonOptions(
     dartOut: 'lib/src/messages.g.dart',
+    swiftOut: 'ios/Classes/Messages.g.swift',
     kotlinOut:
         'android/src/main/kotlin/fr/lsaudon/appcenter_sdk_flutter/Messages.g.kt',
-    kotlinOptions: KotlinOptions(
-      package: 'fr.lsaudon.appcenter_sdk_flutter',
-    ),
+    kotlinOptions: KotlinOptions(package: 'fr.lsaudon.appcenter_sdk_flutter'),
   ),
 )
 @HostApi()

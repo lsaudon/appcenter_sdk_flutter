@@ -8,6 +8,8 @@ import io.flutter.plugin.common.BasicMessageChannel
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MessageCodec
 import io.flutter.plugin.common.StandardMessageCodec
+import java.io.ByteArrayOutputStream
+import java.nio.ByteBuffer
 
 /** Generated class from Pigeon. */
 
@@ -22,7 +24,7 @@ interface AppCenterApi {
 
   companion object {
     /** The codec used by AppCenterApi. */
-    private val codec: MessageCodec<Any?> by lazy {
+    val codec: MessageCodec<Any?> by lazy {
       StandardMessageCodec()
     }
     /** Sets up an instance of `AppCenterApi` to handle messages through the `binaryMessenger`. */
@@ -73,7 +75,7 @@ interface AppCenterApi {
           channel.setMessageHandler { _, reply ->
             val wrapped = hashMapOf<String, Any?>()
             try {
-              api.isEnabled {
+              api.isEnabled() {
                 reply.reply(wrapResult(it))
               }
             } catch (exception: Error) {
@@ -107,7 +109,7 @@ interface AppCenterApi {
           channel.setMessageHandler { _, reply ->
             val wrapped = hashMapOf<String, Any?>()
             try {
-              api.getInstallId {
+              api.getInstallId() {
                 reply.reply(wrapResult(it))
               }
             } catch (exception: Error) {
@@ -151,7 +153,7 @@ interface AppCenterAnalyticsApi {
 
   companion object {
     /** The codec used by AppCenterAnalyticsApi. */
-    private val codec: MessageCodec<Any?> by lazy {
+    val codec: MessageCodec<Any?> by lazy {
       StandardMessageCodec()
     }
     /** Sets up an instance of `AppCenterAnalyticsApi` to handle messages through the `binaryMessenger`. */
@@ -238,7 +240,7 @@ interface AppCenterAnalyticsApi {
           channel.setMessageHandler { _, reply ->
             val wrapped = hashMapOf<String, Any?>()
             try {
-              api.analyticsIsEnabled {
+              api.analyticsIsEnabled() {
                 reply.reply(wrapResult(it))
               }
             } catch (exception: Error) {
@@ -316,7 +318,7 @@ interface AppCenterCrashesApi {
 
   companion object {
     /** The codec used by AppCenterCrashesApi. */
-    private val codec: MessageCodec<Any?> by lazy {
+    val codec: MessageCodec<Any?> by lazy {
       StandardMessageCodec()
     }
     /** Sets up an instance of `AppCenterCrashesApi` to handle messages through the `binaryMessenger`. */
@@ -345,7 +347,7 @@ interface AppCenterCrashesApi {
           channel.setMessageHandler { _, reply ->
             val wrapped = hashMapOf<String, Any?>()
             try {
-              api.hasReceivedMemoryWarningInLastSession {
+              api.hasReceivedMemoryWarningInLastSession() {
                 reply.reply(wrapResult(it))
               }
             } catch (exception: Error) {
@@ -363,7 +365,7 @@ interface AppCenterCrashesApi {
           channel.setMessageHandler { _, reply ->
             val wrapped = hashMapOf<String, Any?>()
             try {
-              api.hasCrashedInLastSession {
+              api.hasCrashedInLastSession() {
                 reply.reply(wrapResult(it))
               }
             } catch (exception: Error) {
@@ -401,7 +403,7 @@ interface AppCenterCrashesApi {
           channel.setMessageHandler { _, reply ->
             val wrapped = hashMapOf<String, Any?>()
             try {
-              api.crashesIsEnabled {
+              api.crashesIsEnabled() {
                 reply.reply(wrapResult(it))
               }
             } catch (exception: Error) {

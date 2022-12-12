@@ -25,6 +25,8 @@ linter:
 dart_code_metrics:
   extends:
     - package:dart_code_metrics/presets/all.yaml
+  rules-exclude:
+    - ["**/*.g.dart"]
   rules:
     - avoid-ignoring-return-values: false
     - avoid-passing-async-when-sync-expected: false
@@ -33,7 +35,7 @@ dart_code_metrics:
     - member-ordering:
         alphabetize: true
         order:
-          - constructors 
+          - constructors
           - private-fields
           - public-fields
     - no-equal-arguments:
