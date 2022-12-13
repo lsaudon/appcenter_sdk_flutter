@@ -15,7 +15,7 @@ class AppCenterAnalytics {
     final int? flags,
   }) =>
       AppCenterAnalyticsPlatformInterface.instance
-          .trackEvent(name, properties, flags);
+          .trackEvent(name: name, properties: properties, flags: flags);
 
   static Future<void> pause() =>
       AppCenterAnalyticsPlatformInterface.instance.pause();

@@ -16,11 +16,11 @@ abstract class AppCenterAnalyticsPlatformInterface extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<void> trackEvent(
-    final String name,
-    final Map<String, String>? properties,
-    final int? flags,
-  ) async =>
+  Future<void> trackEvent({
+    required final String name,
+    required final Map<String, String>? properties,
+    required final int? flags,
+  }) async =>
       throw UnimplementedError('trackEvent has not been implemented.');
 
   Future<void> pause() async =>

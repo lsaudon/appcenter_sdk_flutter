@@ -15,11 +15,11 @@ class AppCenterAnalyticsMethodChannel
   final AppCenterAnalyticsApi _api;
 
   @override
-  Future<void> trackEvent(
-    final String name,
-    final Map<String, String>? properties,
-    final int? flags,
-  ) async {
+  Future<void> trackEvent({
+    required final String name,
+    required final Map<String, String>? properties,
+    required final int? flags,
+  }) async {
     await _api.trackEvent(name, properties, flags);
   }
 

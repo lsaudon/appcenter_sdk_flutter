@@ -1,16 +1,95 @@
-# appcenter_sdk_flutter
+# App Center SDK for Flutter
 
-A new Flutter plugin project.
+App Center is your continuous integration, delivery and learning solution for iOS and Android apps. Get faster release cycles, higher-quality apps, and the insights to build what users want.
 
-## Getting Started
+When using the `trackException`, the flutter stack trace will appear in App Center.
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/developing-packages/),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
+## Usage
 
-For help getting started with Flutter development, view the
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```dart
+import 'package:appcenter_sdk_flutter/appcenter_sdk_flutter.dart';
+import 'package:flutter/material.dart';
 
-flutter pub run pigeon --input pigeons/messages.dar
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await AppCenter.start(secret: '<APP-SECRET>');
+  FlutterError.onError = (final details) async {
+    await AppCenterCrashes.trackException(
+      message: details.exception.toString(),
+      type: details.exception.runtimeType,
+      stackTrace: details.stack,
+    );
+  };
+  runApp(const MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(final BuildContext context) => MaterialApp(
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text('App Center Sdk'),
+          ),
+          body: Center(
+            child: ElevatedButton(
+              onPressed: () {
+                int.parse('not a number');
+              },
+              child: const Text('TrackException'),
+            ),
+          ),
+        ),
+      );
+}
+```
+
+### AppCenter
+
+```dart
+await AppCenter.start('secret');
+await AppCenter.enable();
+await AppCenter.disable();
+final isEnabled = await AppCenter.isEnabled();
+final isConfigured = await AppCenter.isConfigured();
+final installId = await AppCenter.getInstallId();
+final isRunningInAppCenterTestCloud = await AppCenter.isRunningInAppCenterTestCloud();
+```
+
+### AppCenter Analytics
+
+```dart
+  await AppCenter.trackEvent(name: 'A Event', properties: {'property':'value'}, flags: 1);
+  await AppCenter.pause();
+  await AppCenter.resume();
+  await AppCenter.enable();
+  await AppCenter.disable();
+  final isEnabled = await AppCenter.isEnabled();
+  await AppCenter.enableManualSessionTracker();
+  await AppCenter.startSession();
+  final isSetted =  AppCenter.setTransmissionInterval(3);
+```
+
+### AppCenter Crashes
+
+```dart
+  await generateTestCrash()generateTestCrash();
+
+  final hasReceivedMemoryWarningInLastSession = AppCenterCrashes.hasReceivedMemoryWarningInLastSession();
+
+  final hasCrashedInLastSession = AppCenterCrashes.hasCrashedInLastSession();
+
+  await AppCenterCrashes.enable();
+
+  await AppCenterCrashes.disable();
+
+  final isEnabled = AppCenterCrashes.isEnabled();
+
+  await AppCenterCrashes.trackException(message: 'MessageException', type: MessageException.runtimeType, stackTrace: StackTrace.fromString('stackTraceString'), properties: {'property':'value'});
+```
