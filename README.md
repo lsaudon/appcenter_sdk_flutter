@@ -1,8 +1,6 @@
 # App Center SDK for Flutter
 
-App Center is your continuous integration, delivery and learning solution for iOS and Android apps. Get faster release cycles, higher-quality apps, and the insights to build what users want.
-
-When using the `trackException`, the flutter stack trace will appear in App Center.
+This package supports only the **Analytics** and **Crashes** parts of the sdk.
 
 ## Usage
 
@@ -93,3 +91,9 @@ final isRunningInAppCenterTestCloud = await AppCenter.isRunningInAppCenterTestCl
 
   await AppCenterCrashes.trackException(message: 'MessageException', type: MessageException.runtimeType, stackTrace: StackTrace.fromString('stackTraceString'), properties: {'property':'value'});
 ```
+
+When using the `trackException`, the flutter stack trace will appear in App Center.
+
+|Android|iOS|
+| - | - |
+|![App Center Android](docs/appcenter-android.png)|![App Center iOS](docs/appcenter-ios.png)|
