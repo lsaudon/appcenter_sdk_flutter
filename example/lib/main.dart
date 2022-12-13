@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
           ),
           body: Center(
             child: ElevatedButton(
-              onPressed: () async {
+              onPressed: () {
                 int.parse('not a number');
               },
               child: const Text('TrackException'),

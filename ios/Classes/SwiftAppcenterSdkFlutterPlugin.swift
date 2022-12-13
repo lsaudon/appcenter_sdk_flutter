@@ -106,7 +106,7 @@ public class SwiftAppCenterSdkFlutterPlugin: NSObject, FlutterPlugin, AppCenterA
         exceptionModel.message = message
         exceptionModel.type = type
         exceptionModel.stackTrace = stackTrace
-        exceptionModel.wrapperSdkName = "appcenter.react-native"
+        exceptionModel.wrapperSdkName = "appcenter.xamarin"
         Crashes.trackException(exceptionModel, properties: properties, attachments: nil)
     }
     // AppCenter Crashes
