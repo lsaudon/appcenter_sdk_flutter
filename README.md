@@ -96,4 +96,4 @@ When using the `trackException`, the flutter stack trace will appear in App Cent
 
 |Android|iOS|
 | - | - |
-|![App Center Android](docs/appcenter-android.png)|![App Center iOS](docs/appcenter-ios.png)|
+|![App Center Android](doc/appcenter-android.png)|![App Center iOS](doc/appcenter-ios.png)|
