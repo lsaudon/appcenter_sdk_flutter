@@ -17,7 +17,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mocktail: ^0.3.0
-  pigeon: ^4.2.10
+  pigeon: ">=4.2.10 <6.0.0"
 
 flutter:
   plugin:
