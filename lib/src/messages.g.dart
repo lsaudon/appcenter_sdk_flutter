@@ -7,7 +7,6 @@ import 'dart:typed_data' show Float64List, Int32List, Int64List, Uint8List;
 import 'package:flutter/foundation.dart' show ReadBuffer, WriteBuffer;
 import 'package:flutter/services.dart';
 
-
 class AppCenterApi {
   /// Constructor for [AppCenterApi].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
@@ -66,8 +65,7 @@ class AppCenterApi {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.AppCenterApi.isEnabled', codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(null) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(null) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -93,8 +91,7 @@ class AppCenterApi {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.AppCenterApi.isConfigured', codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(null) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(null) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -120,8 +117,7 @@ class AppCenterApi {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.AppCenterApi.getInstallId', codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(null) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(null) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -147,8 +143,7 @@ class AppCenterApi {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.AppCenterApi.isRunningInAppCenterTestCloud', codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(null) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(null) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -171,7 +166,6 @@ class AppCenterApi {
   }
 }
 
-
 class AppCenterAnalyticsApi {
   /// Constructor for [AppCenterAnalyticsApi].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
@@ -182,12 +176,13 @@ class AppCenterAnalyticsApi {
 
   static const MessageCodec<Object?> codec = StandardMessageCodec();
 
-  Future<void> trackEvent(String arg_name, Map<String?, String?>? arg_properties, int? arg_flags) async {
+  Future<void> trackEvent(String arg_name,
+      Map<String?, String?>? arg_properties, int? arg_flags) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.AppCenterAnalyticsApi.trackEvent', codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_name, arg_properties, arg_flags]) as List<Object?>?;
+    final List<Object?>? replyList = await channel
+        .send(<Object?>[arg_name, arg_properties, arg_flags]) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -208,8 +203,7 @@ class AppCenterAnalyticsApi {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.AppCenterAnalyticsApi.pause', codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(null) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(null) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -230,8 +224,7 @@ class AppCenterAnalyticsApi {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.AppCenterAnalyticsApi.resume', codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(null) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(null) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -274,8 +267,7 @@ class AppCenterAnalyticsApi {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.AppCenterAnalyticsApi.analyticsIsEnabled', codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(null) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(null) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -299,10 +291,10 @@ class AppCenterAnalyticsApi {
 
   Future<void> enableManualSessionTracker() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterAnalyticsApi.enableManualSessionTracker', codec,
+        'dev.flutter.pigeon.AppCenterAnalyticsApi.enableManualSessionTracker',
+        codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(null) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(null) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -323,8 +315,7 @@ class AppCenterAnalyticsApi {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.AppCenterAnalyticsApi.startSession', codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(null) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(null) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -343,7 +334,8 @@ class AppCenterAnalyticsApi {
 
   Future<bool> setTransmissionInterval(int arg_seconds) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterAnalyticsApi.setTransmissionInterval', codec,
+        'dev.flutter.pigeon.AppCenterAnalyticsApi.setTransmissionInterval',
+        codec,
         binaryMessenger: _binaryMessenger);
     final List<Object?>? replyList =
         await channel.send(<Object?>[arg_seconds]) as List<Object?>?;
@@ -369,7 +361,6 @@ class AppCenterAnalyticsApi {
   }
 }
 
-
 class AppCenterCrashesApi {
   /// Constructor for [AppCenterCrashesApi].  The [binaryMessenger] named argument is
   /// available for dependency injection.  If it is left null, the default
@@ -384,8 +375,7 @@ class AppCenterCrashesApi {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.AppCenterCrashesApi.generateTestCrash', codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(null) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(null) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -404,10 +394,10 @@ class AppCenterCrashesApi {
 
   Future<bool> hasReceivedMemoryWarningInLastSession() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
-        'dev.flutter.pigeon.AppCenterCrashesApi.hasReceivedMemoryWarningInLastSession', codec,
+        'dev.flutter.pigeon.AppCenterCrashesApi.hasReceivedMemoryWarningInLastSession',
+        codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(null) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(null) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -433,8 +423,7 @@ class AppCenterCrashesApi {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.AppCenterCrashesApi.hasCrashedInLastSession', codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(null) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(null) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -482,8 +471,7 @@ class AppCenterCrashesApi {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.AppCenterCrashesApi.crashesIsEnabled', codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(null) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(null) as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -505,12 +493,14 @@ class AppCenterCrashesApi {
     }
   }
 
-  Future<void> trackException(String arg_message, String? arg_type, String? arg_stackTrace, Map<String?, String?>? arg_properties) async {
+  Future<void> trackException(String arg_message, String? arg_type,
+      String? arg_stackTrace, Map<String?, String?>? arg_properties) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.AppCenterCrashesApi.trackException', codec,
         binaryMessenger: _binaryMessenger);
-    final List<Object?>? replyList =
-        await channel.send(<Object?>[arg_message, arg_type, arg_stackTrace, arg_properties]) as List<Object?>?;
+    final List<Object?>? replyList = await channel.send(
+            <Object?>[arg_message, arg_type, arg_stackTrace, arg_properties])
+        as List<Object?>?;
     if (replyList == null) {
       throw PlatformException(
         code: 'channel-error',
