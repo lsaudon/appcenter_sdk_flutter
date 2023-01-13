@@ -14,7 +14,9 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
+/// MyApp widget.
 class MyApp extends StatefulWidget {
+  /// Initializes [key].
   const MyApp({super.key});
 
   @override

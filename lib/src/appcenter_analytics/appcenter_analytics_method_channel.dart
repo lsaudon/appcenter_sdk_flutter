@@ -2,11 +2,14 @@ import 'package:appcenter_sdk_flutter/src/appcenter_analytics/appcenter_analytic
 import 'package:appcenter_sdk_flutter/src/messages.g.dart';
 import 'package:meta/meta.dart';
 
+/// The method channel implementation of [AppCenterAnalyticsPlatformInterface].
 class AppCenterAnalyticsMethodChannel
     extends AppCenterAnalyticsPlatformInterface {
+  /// Creates a new [AppCenterAnalyticsMethodChannel] instance.
   factory AppCenterAnalyticsMethodChannel() =>
       AppCenterAnalyticsMethodChannel.internal(api: AppCenterAnalyticsApi());
 
+  /// Creates a new [AppCenterAnalyticsMethodChannel] instance for unit tests.
   @visibleForTesting
   AppCenterAnalyticsMethodChannel.internal({
     required final AppCenterAnalyticsApi api,

@@ -17,5 +17,4 @@ linter:
     avoid_final_parameters: false # opposite of `prefer_final_parameters`.
     prefer_double_quotes: false # opposite of `prefer_single_quotes`.
     prefer_relative_imports: false # opposite of `prefer_relative_imports`.
-    public_member_api_docs: false
     unnecessary_final: false # contradiction with `prefer_final_parameters` and `prefer_final_locals`.

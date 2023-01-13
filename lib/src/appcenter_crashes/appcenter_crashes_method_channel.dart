@@ -2,10 +2,13 @@ import 'package:appcenter_sdk_flutter/src/appcenter_crashes/appcenter_crashes_pl
 import 'package:appcenter_sdk_flutter/src/messages.g.dart';
 import 'package:meta/meta.dart';
 
+/// The method channel implementation of [AppCenterCrashesPlatformInterface].
 class AppCenterCrashesMethodChannel extends AppCenterCrashesPlatformInterface {
+  /// Creates a new [AppCenterCrashesMethodChannel] instance.
   factory AppCenterCrashesMethodChannel() =>
       AppCenterCrashesMethodChannel.internal(api: AppCenterCrashesApi());
 
+  /// Creates a new [AppCenterCrashesMethodChannel] instance for unit tests.
   @visibleForTesting
   AppCenterCrashesMethodChannel.internal({
     required final AppCenterCrashesApi api,

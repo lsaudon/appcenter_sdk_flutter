@@ -2,10 +2,13 @@ import 'package:appcenter_sdk_flutter/src/appcenter/appcenter_platform_interface
 import 'package:appcenter_sdk_flutter/src/messages.g.dart';
 import 'package:meta/meta.dart';
 
+/// The method channel implementation of [AppCenterPlatformInterface].
 class AppCenterMethodChannel extends AppCenterPlatformInterface {
+  /// Creates a new [AppCenterMethodChannel] instance.
   factory AppCenterMethodChannel() =>
       AppCenterMethodChannel.internal(api: AppCenterApi());
 
+  /// Creates a new [AppCenterMethodChannel] instance for unit tests.
   @visibleForTesting
   AppCenterMethodChannel.internal({required final AppCenterApi api})
       : _api = api;
