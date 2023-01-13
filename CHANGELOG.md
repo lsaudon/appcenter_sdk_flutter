@@ -1,3 +1,7 @@
+## 0.4.1
+
+* 🎨 Format generated file
+
 ## 0.4.0
 
 * 📝 Document all public members.
