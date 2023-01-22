@@ -77,7 +77,7 @@ final isRunningInAppCenterTestCloud = await AppCenter.isRunningInAppCenterTestCl
 ### AppCenter Crashes
 
 ```dart
-  await generateTestCrash()generateTestCrash();
+  await generateTestCrash();
 
   final hasReceivedMemoryWarningInLastSession = AppCenterCrashes.hasReceivedMemoryWarningInLastSession();
 
