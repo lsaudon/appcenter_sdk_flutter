@@ -1,3 +1,4 @@
+/// Development plugin for the App Center Analytics and Crashes for Flutter.
 library appcenter_sdk_flutter;
 
 export 'src/appcenter/appcenter.dart';
