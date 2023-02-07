@@ -78,17 +78,11 @@ final isRunningInAppCenterTestCloud = await AppCenter.isRunningInAppCenterTestCl
 
 ```dart
   await generateTestCrash();
-
   final hasReceivedMemoryWarningInLastSession = AppCenterCrashes.hasReceivedMemoryWarningInLastSession();
-
   final hasCrashedInLastSession = AppCenterCrashes.hasCrashedInLastSession();
-
   await AppCenterCrashes.enable();
-
   await AppCenterCrashes.disable();
-
   final isEnabled = AppCenterCrashes.isEnabled();
-
   await AppCenterCrashes.trackException(message: 'MessageException', type: MessageException.runtimeType, stackTrace: StackTrace.fromString('stackTraceString'), properties: {'property':'value'});
 ```
 
