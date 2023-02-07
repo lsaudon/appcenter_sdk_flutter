@@ -55,20 +55,21 @@ class AppCenterSdkFlutterPlugin : FlutterPlugin, ActivityAware, AppCenterApi, Ap
         }
     }
 
-    override fun setEnabled(enabled: Boolean, callback: () -> Unit) {
-        AppCenter.setEnabled(enabled).thenAccept { }
+    override fun setEnabled(enabled: Boolean, callback: (Result<Unit>) -> Unit) {
+        AppCenter.setEnabled(enabled).thenAccept { callback.invoke(Result.success(Unit)) }
     }
 
-    override fun isEnabled(callback: (Boolean) -> Unit) {
-        AppCenter.isEnabled().thenAccept(callback)
+    override fun isEnabled(callback: (Result<Boolean>) -> Unit) {
+        AppCenter.isEnabled().thenAccept { value -> callback.invoke(Result.success(value)) }
     }
 
     override fun isConfigured(): Boolean {
         return AppCenter.isConfigured()
     }
 
-    override fun getInstallId(callback: (String) -> Unit) {
-        AppCenter.getInstallId().thenAccept { uuid -> uuid.toString() }
+    override fun getInstallId(callback: (Result<String>) -> Unit) {
+        AppCenter.getInstallId()
+            .thenAccept { uuid -> callback.invoke(Result.success(uuid.toString())) }
     }
 
     override fun isRunningInAppCenterTestCloud(): Boolean {
@@ -93,12 +94,12 @@ class AppCenterSdkFlutterPlugin : FlutterPlugin, ActivityAware, AppCenterApi, Ap
         Analytics.resume()
     }
 
-    override fun analyticsSetEnabled(enabled: Boolean, callback: () -> Unit) {
-        Analytics.setEnabled(enabled).thenAccept { }
+    override fun analyticsSetEnabled(enabled: Boolean, callback: (Result<Unit>) -> Unit) {
+        Analytics.setEnabled(enabled).thenAccept { callback.invoke(Result.success(Unit)) }
     }
 
-    override fun analyticsIsEnabled(callback: (Boolean) -> Unit) {
-        Analytics.isEnabled().thenAccept(callback)
+    override fun analyticsIsEnabled(callback: (Result<Boolean>) -> Unit) {
+        Analytics.isEnabled().thenAccept { value -> callback.invoke(Result.success(value)) }
     }
 
     override fun enableManualSessionTracker() {
@@ -119,20 +120,22 @@ class AppCenterSdkFlutterPlugin : FlutterPlugin, ActivityAware, AppCenterApi, Ap
         Crashes.generateTestCrash()
     }
 
-    override fun hasReceivedMemoryWarningInLastSession(callback: (Boolean) -> Unit) {
-        Crashes.hasReceivedMemoryWarningInLastSession().thenAccept(callback)
+    override fun hasReceivedMemoryWarningInLastSession(callback: (Result<Boolean>) -> Unit) {
+        Crashes.hasReceivedMemoryWarningInLastSession()
+            .thenAccept { value -> callback.invoke(Result.success(value)) }
     }
 
-    override fun hasCrashedInLastSession(callback: (Boolean) -> Unit) {
-        Crashes.hasCrashedInLastSession().thenAccept(callback)
+    override fun hasCrashedInLastSession(callback: (Result<Boolean>) -> Unit) {
+        Crashes.hasCrashedInLastSession()
+            .thenAccept { value -> callback.invoke(Result.success(value)) }
     }
 
-    override fun crashesSetEnabled(enabled: Boolean, callback: () -> Unit) {
-        Crashes.setEnabled(enabled).thenAccept { }
+    override fun crashesSetEnabled(enabled: Boolean, callback: (Result<Unit>) -> Unit) {
+        Crashes.setEnabled(enabled).thenAccept { callback.invoke(Result.success(Unit)) }
     }
 
-    override fun crashesIsEnabled(callback: (Boolean) -> Unit) {
-        Crashes.isEnabled().thenAccept(callback)
+    override fun crashesIsEnabled(callback: (Result<Boolean>) -> Unit) {
+        Crashes.isEnabled().thenAccept { value -> callback.invoke(Result.success(value)) }
     }
 
     override fun trackException(
