@@ -1,3 +1,7 @@
+## 0.4.2
+
+* 🐛 Renaming `AppCenterSdkFlutterPlugin` filenames to match `pluginClass` by @markst in #11
+
 ## 0.4.1
 
 * 🎨 Format generated file

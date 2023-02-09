@@ -1,6 +1,6 @@
 name: appcenter_sdk_flutter
 description: Development plugin for the App Center Analytics and Crashes for Flutter
-version: 0.4.1
+version: 0.4.2
 repository: https://github.com/lsaudon/appcenter_sdk_flutter
 
 environment:
