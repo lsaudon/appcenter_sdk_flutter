@@ -91,3 +91,8 @@ When using the `trackException`, the flutter stack trace will appear in App Cent
 |Android|iOS|
 | - | - |
 |![App Center Android](doc/appcenter-android.png)|![App Center iOS](doc/appcenter-ios.png)|
+
+## Pigeon
+
+Since I always forget the command, I noted it here.
+`flutter pub run pigeon --input pigeons/messages.dart`
