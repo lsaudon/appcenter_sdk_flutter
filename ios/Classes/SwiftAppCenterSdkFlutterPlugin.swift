@@ -5,11 +5,13 @@ import AppCenterAnalytics
 import AppCenterCrashes
 
 public class SwiftAppCenterSdkFlutterPlugin: NSObject, FlutterPlugin, AppCenterApi, AppCenterAnalyticsApi, AppCenterCrashesApi {
+    
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let binaryMessenger : FlutterBinaryMessenger = registrar.messenger()
-        AppCenterApiSetup.setUp(binaryMessenger: binaryMessenger, api: SwiftAppCenterSdkFlutterPlugin.init())
-        AppCenterAnalyticsApiSetup.setUp(binaryMessenger: binaryMessenger, api: SwiftAppCenterSdkFlutterPlugin.init())
-        AppCenterCrashesApiSetup.setUp(binaryMessenger: binaryMessenger, api: SwiftAppCenterSdkFlutterPlugin.init())
+        let binaryMessenger = registrar.messenger()
+        let appCenterPlugin = SwiftAppCenterSdkFlutterPlugin()
+        AppCenterApiSetup.setUp(binaryMessenger: binaryMessenger, api: appCenterPlugin)
+        AppCenterAnalyticsApiSetup.setUp(binaryMessenger: binaryMessenger, api: appCenterPlugin)
+        AppCenterCrashesApiSetup.setUp(binaryMessenger: binaryMessenger, api: appCenterPlugin)
     }
     
     // AppCenter
@@ -41,7 +43,7 @@ public class SwiftAppCenterSdkFlutterPlugin: NSObject, FlutterPlugin, AppCenterA
     }
     // AppCenter
     // AppCenter Analytics
-    func trackEvent(name: String, properties: [String : String]?, flags: Int32?) {
+    func trackEvent(name: String, properties: [String : String]?, flags: Int64?)throws {
         if(flags == nil){
             Analytics.trackEvent(name, withProperties: properties)
         }else{
@@ -74,7 +76,7 @@ public class SwiftAppCenterSdkFlutterPlugin: NSObject, FlutterPlugin, AppCenterA
         Analytics.startSession()
     }
     
-    func setTransmissionInterval(seconds: Int32) -> Bool {
+    func setTransmissionInterval(seconds: Int64) throws -> Bool {
         Analytics.transmissionInterval = UInt.init(seconds)
         return true
     }

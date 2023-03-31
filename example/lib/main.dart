@@ -31,11 +31,24 @@ class _MyAppState extends State<MyApp> {
             title: const Text('App Center Sdk'),
           ),
           body: Center(
-            child: ElevatedButton(
-              onPressed: () {
-                int.parse('not a number');
-              },
-              child: const Text('TrackException'),
+            child: Column(
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    int.parse('not a number');
+                  },
+                  child: const Text('TrackException'),
+                ),
+                ElevatedButton(
+                  onPressed: () async =>
+                      AppCenterAnalytics.trackEvent(name: 'eventName'),
+                  child: const Text('TrackEvent'),
+                ),
+                ElevatedButton(
+                  onPressed: () async => AppCenterCrashes.generateTestCrash(),
+                  child: const Text('GenerateTestCrash'),
+                ),
+              ],
             ),
           ),
         ),

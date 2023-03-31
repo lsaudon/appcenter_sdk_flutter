@@ -2,7 +2,7 @@ group 'fr.lsaudon.appcenter_sdk_flutter'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.7.20'
+    ext.kotlin_version = '1.8.0'
     repositories {
         google()
         mavenCentral()
@@ -25,7 +25,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -46,6 +46,6 @@ android {
 }
 
 dependencies {
-    implementation 'com.microsoft.appcenter:appcenter-analytics:5.0.0'
-    implementation 'com.microsoft.appcenter:appcenter-crashes:5.0.0'
+    implementation 'com.microsoft.appcenter:appcenter-analytics:5.0.1'
+    implementation 'com.microsoft.appcenter:appcenter-crashes:5.0.1'
 }
