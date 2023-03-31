@@ -63,15 +63,15 @@ final isRunningInAppCenterTestCloud = await AppCenter.isRunningInAppCenterTestCl
 ### AppCenter Analytics
 
 ```dart
-  await AppCenter.trackEvent(name: 'A Event', properties: {'property':'value'}, flags: 1);
-  await AppCenter.pause();
-  await AppCenter.resume();
-  await AppCenter.enable();
-  await AppCenter.disable();
-  final isEnabled = await AppCenter.isEnabled();
-  await AppCenter.enableManualSessionTracker();
-  await AppCenter.startSession();
-  final isSetted =  AppCenter.setTransmissionInterval(3);
+  await AppCenterAnalytics.trackEvent(name: 'A Event', properties: {'property':'value'}, flags: 1);
+  await AppCenterAnalytics.pause();
+  await AppCenterAnalytics.resume();
+  await AppCenterAnalytics.enable();
+  await AppCenterAnalytics.disable();
+  final isEnabled = await AppCenterAnalytics.isEnabled();
+  await AppCenterAnalytics.enableManualSessionTracker();
+  await AppCenterAnalytics.startSession();
+  final isSetted =  AppCenterAnalytics.setTransmissionInterval(3);
 ```
 
 ### AppCenter Crashes
