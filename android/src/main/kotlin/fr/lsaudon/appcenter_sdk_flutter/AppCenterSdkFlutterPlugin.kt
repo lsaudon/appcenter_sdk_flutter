@@ -44,39 +44,29 @@ class AppCenterSdkFlutterPlugin : FlutterPlugin, ActivityAware, AppCenterApi, Ap
 
     // App Center
     override fun start(secret: String) {
-        val activity = this.mainActivity
-        if (activity != null && !AppCenter.isConfigured()) {
-            AppCenter.start(
-                activity.application,
-                secret,
-                Analytics::class.java,
-                Crashes::class.java
-            )
+        mainActivity?.let {
+            if (!AppCenter.isConfigured()) {
+                AppCenter.start(it.application, secret, Analytics::class.java, Crashes::class.java)
+            }
         }
     }
 
     override fun setEnabled(enabled: Boolean, callback: (Result<Unit>) -> Unit) {
-        AppCenter.setEnabled(enabled).thenAccept { callback.invoke(Result.success(Unit)) }
+        AppCenter.setEnabled(enabled).thenAccept { callback(Result.success(Unit)) }
     }
 
     override fun isEnabled(callback: (Result<Boolean>) -> Unit) {
-        AppCenter.isEnabled().thenAccept { value -> callback.invoke(Result.success(value)) }
+        AppCenter.isEnabled().thenAccept { value -> callback(Result.success(value)) }
     }
 
-    override fun isConfigured(): Boolean {
-        return AppCenter.isConfigured()
-    }
+    override fun isConfigured(): Boolean = AppCenter.isConfigured()
 
     override fun getInstallId(callback: (Result<String>) -> Unit) {
-        AppCenter.getInstallId()
-            .thenAccept { uuid -> callback.invoke(Result.success(uuid.toString())) }
+        AppCenter.getInstallId().thenAccept { uuid -> callback(Result.success(uuid.toString())) }
     }
 
-    override fun isRunningInAppCenterTestCloud(): Boolean {
-        return AppCenter.isRunningInAppCenterTestCloud()
-    }
+    override fun isRunningInAppCenterTestCloud(): Boolean = AppCenter.isRunningInAppCenterTestCloud()
 
-    // App Center
     // App Center Analytics
     override fun trackEvent(name: String, properties: Map<String, String>?, flags: Long?) {
         if (flags != null) {
@@ -95,11 +85,11 @@ class AppCenterSdkFlutterPlugin : FlutterPlugin, ActivityAware, AppCenterApi, Ap
     }
 
     override fun analyticsSetEnabled(enabled: Boolean, callback: (Result<Unit>) -> Unit) {
-        Analytics.setEnabled(enabled).thenAccept { callback.invoke(Result.success(Unit)) }
+        Analytics.setEnabled(enabled).thenAccept { callback(Result.success(Unit)) }
     }
 
     override fun analyticsIsEnabled(callback: (Result<Boolean>) -> Unit) {
-        Analytics.isEnabled().thenAccept { value -> callback.invoke(Result.success(value)) }
+        Analytics.isEnabled().thenAccept { value -> callback(Result.success(value)) }
     }
 
     override fun enableManualSessionTracker() {
@@ -110,11 +100,8 @@ class AppCenterSdkFlutterPlugin : FlutterPlugin, ActivityAware, AppCenterApi, Ap
         Analytics.startSession()
     }
 
-    override fun setTransmissionInterval(seconds: Long): Boolean {
-        return Analytics.setTransmissionInterval(seconds.toInt())
-    }
+    override fun setTransmissionInterval(seconds: Long): Boolean = Analytics.setTransmissionInterval(seconds.toInt())
 
-    // App Center Analytics
     // App Center Crashes
     override fun generateTestCrash() {
         Crashes.generateTestCrash()
@@ -122,20 +109,20 @@ class AppCenterSdkFlutterPlugin : FlutterPlugin, ActivityAware, AppCenterApi, Ap
 
     override fun hasReceivedMemoryWarningInLastSession(callback: (Result<Boolean>) -> Unit) {
         Crashes.hasReceivedMemoryWarningInLastSession()
-            .thenAccept { value -> callback.invoke(Result.success(value)) }
+            .thenAccept { value -> callback(Result.success(value)) }
     }
 
     override fun hasCrashedInLastSession(callback: (Result<Boolean>) -> Unit) {
         Crashes.hasCrashedInLastSession()
-            .thenAccept { value -> callback.invoke(Result.success(value)) }
+            .thenAccept { value -> callback(Result.success(value)) }
     }
 
     override fun crashesSetEnabled(enabled: Boolean, callback: (Result<Unit>) -> Unit) {
-        Crashes.setEnabled(enabled).thenAccept { callback.invoke(Result.success(Unit)) }
+        Crashes.setEnabled(enabled).thenAccept { callback(Result.success(Unit)) }
     }
 
     override fun crashesIsEnabled(callback: (Result<Boolean>) -> Unit) {
-        Crashes.isEnabled().thenAccept { value -> callback.invoke(Result.success(value)) }
+        Crashes.isEnabled().thenAccept { value -> callback(Result.success(value)) }
     }
 
     override fun trackException(
