@@ -1,3 +1,13 @@
+## 0.5.0
+
+* 📝 Fix className for AppCenterAnalytics and AppCenterCrashes
+* ⬆️ Upgrade kotlin
+* ⬆️ Upgrade compileSdk
+* ⬆️ Upgrade appcenter-analytics
+* ⬆️ Upgrade appcenter-crashes
+* ⬆️ Upgrade pigeon
+* ⬆️ Upgrade plugin_platform_interface
+
 ## 0.4.2
 
 * 🐛 Renaming `AppCenterSdkFlutterPlugin` filenames to match `pluginClass` by @markst in #11
