@@ -1,3 +1,6 @@
+> [!WARNING]  
+> Visual Studio App Center is scheduled for retirement on March 31, 2025. [Learn more about support timelines and recommended alternatives.](https://learn.microsoft.com/fr-fr/appcenter/retirement)
+
 # App Center SDK for Flutter
 
 This package supports only the **Analytics** and **Crashes** parts of the sdk.
