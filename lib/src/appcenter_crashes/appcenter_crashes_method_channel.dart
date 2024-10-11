@@ -41,7 +41,7 @@ class AppCenterCrashesMethodChannel extends AppCenterCrashesPlatformInterface {
     required final String message,
     required final Type? type,
     required final StackTrace? stackTrace,
-    required final Map<String?, String?>? properties,
+    required final Map<String, String>? properties,
   }) async =>
       _api.trackException(
         message,

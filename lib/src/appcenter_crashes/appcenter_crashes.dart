@@ -40,7 +40,7 @@ class AppCenterCrashes {
     required final String message,
     final Type? type,
     final StackTrace? stackTrace,
-    final Map<String?, String?>? properties,
+    final Map<String, String>? properties,
   }) =>
       AppCenterCrashesPlatformInterface.instance.trackException(
         message: message,

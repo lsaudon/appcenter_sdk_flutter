@@ -51,7 +51,7 @@ abstract class AppCenterCrashesPlatformInterface extends PlatformInterface {
     required final String message,
     required final Type? type,
     required final StackTrace? stackTrace,
-    required final Map<String?, String?>? properties,
+    required final Map<String, String>? properties,
   }) async =>
       throw UnimplementedError(
         '''Future<void> trackException({required String message, Type? type, StackTrace? stackTrace, Map<String?, String?>? properties}) has not been implemented.''',
