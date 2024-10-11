@@ -2,22 +2,23 @@ name: appcenter_sdk_flutter
 description: Development plugin for the App Center Analytics and Crashes for Flutter
 version: 0.5.1
 repository: https://github.com/lsaudon/appcenter_sdk_flutter
+issue_tracker: https://github.com/lsaudon/appcenter_sdk_flutter/issues
 
 environment:
-  sdk: ">=2.18.0 <3.0.0"
-  flutter: ">=2.5.0"
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  meta: ^1.8.0 # flutter_test from sdk depends on meta 1.8.0
-  plugin_platform_interface: ^2.1.4
+  meta: ^1.15.0 # flutter_test from sdk depends on meta 1.15.0
+  plugin_platform_interface: ^2.1.8
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mocktail: ^0.3.0
-  pigeon: ^10.0.0
+  mocktail: ^1.0.4
+  pigeon: ^22.4.2
 
 flutter:
   plugin:
